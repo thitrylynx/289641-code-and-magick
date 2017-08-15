@@ -14,25 +14,26 @@ window.renderStatistics = function (ctx, names, times) {
   var getBlueLightness = function () {
     return 'hsl(' + 240 + ', ' + 100 + '%, ' + Math.round(Math.random() * 100) + '%)';
   };
-  var histogramHeight = 130;
+  var histogramHeight = 150;
   var maxTime = Math.max.apply(null, times);
   var step = histogramHeight / (maxTime - 0);
   var barWidth = 40;
-  var barHeight = 210;
-  var barIndent = 120;
+  var barIndent = 100;
+  var textIndent = 20;
   var indent = 90;
-  var initialX = 140;
+  var initialX = 150;
   var initialY = 240;
 
   ctx.textBaseline = 'top';
   for (var i = 0; i < times.length; i++) {
+    var barHeight = times[i] * (step);
     ctx.fillStyle = names[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : getBlueLightness();
-    ctx.fillRect(initialX + indent * i, initialY, barWidth, times[i] * (-step));
+    ctx.fillRect(initialX + indent * i, initialY, barWidth, -barHeight);
     ctx.fillStyle = 'black';
     ctx.font = '16px Tahoma';
     ctx.textBaseline = 'hanging';
     ctx.fillText(names[i], initialX + indent * i, histogramHeight + barIndent);
-    ctx.fillText(Math.round(times[i]), initialX + indent * i, barHeight - (times[i] * (step)));
+    ctx.fillText(Math.round(times[i]), initialX + indent * i, initialY - barHeight - textIndent);
   }
 };
 
