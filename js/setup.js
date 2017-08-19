@@ -2,15 +2,12 @@
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
-document.querySelector('.setup-similar').classList.remove('hidden');
-
-var similarListElement = document.querySelector('.setup-similar-list');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 var WIZARD_FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-
+var similarListElement = userDialog.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 
 var wizards = [
   {
@@ -38,16 +35,16 @@ var wizards = [
     eyesColor: EYES_COLORS[Math.floor(Math.random() * (EYES_COLORS.length))]
   }
 ];
-var test = wizards[0];
-var test2 = wizards[1];
-var test3 = wizards[2];
-var test4 = wizards[3];
-
-for (var i = 0; i < 4; i++) {
+var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].firstName + ' ' + wizards[i].lastName;
-  similarListElement.appendChild(wizardElement);
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.firstName + ' ' + wizard.lastName;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+  return wizardElement;
+};
+var fragment = document.createDocumentFragment();
+for (var i = 0; i < wizards.length; i++) {
+  fragment.appendChild(renderWizard(wizards[i]));
 }
-
-
-
+similarListElement.appendChild(fragment);
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
