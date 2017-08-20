@@ -1,41 +1,41 @@
 'use strict';
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
 var WIZARD_FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var userDialog = document.querySelector('.setup');
+userDialog.classList.remove('hidden');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
-var renderRandom = function (value) {
+var renderRandomNumber = function (value) {
   var valueResult = Math.floor(Math.random() * (value.length));
   return valueResult;
 };
 var wizards = [
   {
-    firstName: WIZARD_FIRST_NAMES[renderRandom(WIZARD_FIRST_NAMES)],
-    lastName: WIZARD_LAST_NAMES[renderRandom(WIZARD_LAST_NAMES)],
-    coatColor: COAT_COLORS[renderRandom(COAT_COLORS)],
-    eyesColor: EYES_COLORS[renderRandom(EYES_COLORS)]
+    firstName: WIZARD_FIRST_NAMES[renderRandomNumber(WIZARD_FIRST_NAMES)],
+    lastName: WIZARD_LAST_NAMES[renderRandomNumber(WIZARD_LAST_NAMES)],
+    coatColor: COAT_COLORS[renderRandomNumber(COAT_COLORS)],
+    eyesColor: EYES_COLORS[renderRandomNumber(EYES_COLORS)]
   },
   {
-    firstName: WIZARD_FIRST_NAMES[renderRandom(WIZARD_FIRST_NAMES)],
-    lastName: WIZARD_LAST_NAMES[renderRandom(WIZARD_LAST_NAMES)],
-    coatColor: COAT_COLORS[renderRandom(COAT_COLORS)],
-    eyesColor: EYES_COLORS[renderRandom(EYES_COLORS)]
+    firstName: WIZARD_FIRST_NAMES[renderRandomNumber(WIZARD_FIRST_NAMES)],
+    lastName: WIZARD_LAST_NAMES[renderRandomNumber(WIZARD_LAST_NAMES)],
+    coatColor: COAT_COLORS[renderRandomNumber(COAT_COLORS)],
+    eyesColor: EYES_COLORS[renderRandomNumber(EYES_COLORS)]
   },
   {
-    firstName: WIZARD_FIRST_NAMES[renderRandom(WIZARD_FIRST_NAMES)],
-    lastName: WIZARD_LAST_NAMES[renderRandom(WIZARD_LAST_NAMES)],
-    coatColor: COAT_COLORS[renderRandom(COAT_COLORS)],
-    eyesColor: EYES_COLORS[renderRandom(EYES_COLORS)]
+    firstName: WIZARD_FIRST_NAMES[renderRandomNumber(WIZARD_FIRST_NAMES)],
+    lastName: WIZARD_LAST_NAMES[renderRandomNumber(WIZARD_LAST_NAMES)],
+    coatColor: COAT_COLORS[renderRandomNumber(COAT_COLORS)],
+    eyesColor: EYES_COLORS[renderRandomNumber(EYES_COLORS)]
   },
   {
-    firstName: WIZARD_FIRST_NAMES[renderRandom(WIZARD_FIRST_NAMES)],
-    lastName: WIZARD_LAST_NAMES[renderRandom(WIZARD_LAST_NAMES)],
-    coatColor: COAT_COLORS[renderRandom(COAT_COLORS)],
-    eyesColor: EYES_COLORS[renderRandom(EYES_COLORS)]
+    firstName: WIZARD_FIRST_NAMES[renderRandomNumber(WIZARD_FIRST_NAMES)],
+    lastName: WIZARD_LAST_NAMES[renderRandomNumber(WIZARD_LAST_NAMES)],
+    coatColor: COAT_COLORS[renderRandomNumber(COAT_COLORS)],
+    eyesColor: EYES_COLORS[renderRandomNumber(EYES_COLORS)]
   }
 ];
 var renderWizard = function (wizard) {
