@@ -35,8 +35,6 @@ window.renderStatistics = function (ctx, names, times) {
     var playerTime = times[i];
     var totalNameIndent = HISTOGRAM_HEIGHT + BAR_INDENT;
     var totalTimeIndent = INITIAL_Y - barHeight - TEXT_INDENT;
-
-
     ctx.fillStyle = names[i] === YOUR_NAME ? YOUR_COLOR : PLAYERS_COLOR;
     ctx.fillRect(totalWidth, INITIAL_Y, BAR_WIDTH, -barHeight);
     ctx.fillStyle = 'black';
